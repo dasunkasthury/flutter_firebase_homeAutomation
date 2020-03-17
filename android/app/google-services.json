@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "456402198089",
+    "firebase_url": "https://myautohome-3d52a.firebaseio.com",
+    "project_id": "myautohome-3d52a",
+    "storage_bucket": "myautohome-3d52a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:456402198089:android:3f0228a06ca605ad086998",
+        "android_client_info": {
+          "package_name": "com.example.my_home_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "456402198089-idhsdeug65c2iei5v7prv2ipkustd9ig.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJupoHGxH6CrpgUn_2wfx5Ju5JsarX3EM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "456402198089-idhsdeug65c2iei5v7prv2ipkustd9ig.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
