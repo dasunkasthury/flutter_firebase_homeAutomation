@@ -19,6 +19,7 @@ dependencies:
   intl: ^0.16.1
   firebase_auth: ^0.15.5+2
   cloud_firestore: ^0.13.4+2
+  font_awesome_flutter: ^8.7.0
 
 dev_dependencies:
   flutter_test:

@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:english_words/english_words.dart';
-import 'package:assets_audio_player/assets_audio_player.dart';
-import './question.dart';
-
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeAutomationFirstPage extends StatefulWidget {
   @override
@@ -12,37 +8,6 @@ class HomeAutomationFirstPage extends StatefulWidget {
 }
 
 class _HomeAutomationFirstPageState extends State<HomeAutomationFirstPage> {
-  int questionNumber = 0;
-
-  List<Icon> scoreKeeper = [];
-
-  void playSound(int soundIndex) {
-    final assetsAudioPlayer = AssetsAudioPlayer();
-    assetsAudioPlayer.open(
-      "assets/note$soundIndex.wav",
-    );
-    assetsAudioPlayer.play();
-  }
-
-  FlatButton soundKey(int soundNumber, Color color) {
-    return FlatButton(
-      onPressed: () {
-        playSound(soundNumber);
-      },
-      child: Container(
-        height: 20,
-        width: 100,
-        color: color,
-      ),
-    );
-  }
-
-  List<Question> qList = [
-    new Question(q: 'aa', a: true),
-    new Question(q: 'bb', a: false),
-    new Question(q: 'cc', a: true)
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,52 +17,60 @@ class _HomeAutomationFirstPageState extends State<HomeAutomationFirstPage> {
         ),
       ),
       body: SafeArea(
-        child: Center(
           child: Column(
+        children: <Widget>[
+          Expanded(
+              child: Row(
             children: <Widget>[
-              Image(
-                image: AssetImage('images/robot.png'),
-                height: 200,
-                width: 150,
-              ),
-              Text(nouns.first),
-              SizedBox(
-                height: 25,
-              ),
               Expanded(
-                  child: Column(
-                children: <Widget>[
-                  soundKey(1, Colors.green),
-                  soundKey(2, Colors.red),
-                  soundKey(3, Colors.blue),
-                  Row(
-                    children: scoreKeeper,
-                  ),
-                  Text(qList[questionNumber].questionText),
-                  FlatButton(
-                    onPressed: () {
-                      setState(() {
-                        if (questionNumber < 2) {
-                          questionNumber++;
-                        }
-                      });
-
-                      if (qList[questionNumber].questionAnswer == true) {
-                        setState(() {
-                          scoreKeeper.add(Icon(
-                            Icons.check,
-                            color: Colors.white,
-                          ));
-                        });
-                      }
-                    },
-                    child: Text("TRUE")
-                  )
-                ],
-              ))
+                  child: ReusableCard(
+                color: Color(0xff191b22),
+                cardChild: Column(
+                  children: <Widget>[
+                    Icon(
+                      FontAwesomeIcons.mars,
+                      size: 80,
+                    ),
+                    SizedBox(height: 15,),
+                    Text("MALE", style: TextStyle(fontSize: 18),)
+                  ],
+                ),
+              )),
+              Expanded(child: ReusableCard(color: Color(0xff191b22))),
             ],
-          ),
-        ),
+          )),
+          Expanded(child: ReusableCard(color: Color(0xff191b22))),
+          Expanded(
+              child: Row(
+            children: <Widget>[
+              Expanded(child: ReusableCard(color: Color(0xff191b22))),
+              Expanded(child: ReusableCard(color: Color(0xff191b22))),
+            ],
+          )),
+          Container(
+            color: Colors.pinkAccent,
+            margin: EdgeInsets.only(top: 10),
+            width: double.infinity,
+            height: 80,
+          )
+        ],
+      )),
+    );
+  }
+}
+
+class ReusableCard extends StatelessWidget {
+  ReusableCard({@required this.color, this.cardChild});
+  final Color color;
+  final Widget cardChild;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: cardChild,
+      margin: EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: color,
       ),
     );
   }
