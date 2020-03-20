@@ -10,7 +10,7 @@ class HomeAutomationApp extends StatelessWidget {
       theme: ThemeData.light().copyWith(
         primaryColor: Color(0xff2196F3),
         accentColor: Colors.greenAccent,
-        scaffoldBackgroundColor: Colors.lime,
+        scaffoldBackgroundColor: Colors.white,
         textTheme: TextTheme(body1: TextStyle(color: Colors.white),) ,
       ),
       home: HomeAutomationFirstPage(),
