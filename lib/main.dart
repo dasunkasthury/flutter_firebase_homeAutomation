@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './input_page.dart';
+import './screens/welcome_screen.dart';
 
 void main() => runApp(HomeAutomationApp());
 
@@ -13,7 +13,7 @@ class HomeAutomationApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         textTheme: TextTheme(body1: TextStyle(color: Colors.white),) ,
       ),
-      home: HomeAutomationFirstPage(),
+      home: WelcomeScreen(),
     );
   }
 }
