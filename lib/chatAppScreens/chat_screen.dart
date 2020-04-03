@@ -1,9 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:intl/intl.dart';
 import '../constants.dart';
+import '../services/firebaseHelper.dart';
 
 class ChatScreen extends StatefulWidget {
   static const String id = 'chat_Screen';
@@ -13,32 +11,12 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final _auth = FirebaseAuth.instance;
-  //final _firebase = FirebaseDatabase.instance.reference().child("chat").push();
 
-  //////////////////////////for databse
+  FirebaseHelper firebase = FirebaseHelper();
 
-  static Future<String> addNewSensor() async {
-    var mountain = <String, dynamic>{
-      'FrontLightStatus': '',
-      'created': _getDateNow(),
-    };
-
-    DatabaseReference reference =
-        FirebaseDatabase.instance.reference().child("Home").push();
-
-    reference.set(mountain);
-
-    return reference.key;
-  }
-
-  static Future<void> saveSensorData(String locationKey, bool value) async {
-    return FirebaseDatabase.instance
-        .reference()
-        .child("value")
-        .set(value);
-  }
-
-  //////////////////////////////////
+  int red;
+  int green;
+  int blue;
 
   @override
   void initState() {
@@ -103,29 +81,6 @@ class _ChatScreenState extends State<ChatScreen> {
                 ],
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
-            Center(
-              child: Column(
-                children: <Widget>[
-                  FlatButton(
-                    onPressed: () async {
-                      await saveSensorData("-M2m3xhBv7SVlo8LWM_P", true);
-                    },
-                    child: Text("ON"),
-                    color: Colors.green,
-                  ),
-                  FlatButton(
-                    onPressed: () async {
-                      await saveSensorData("-M2m3xhBv7SVlo8LWM_P", false);
-                    },
-                    child: Text("OFF"),
-                    color: Colors.red,
-                  )
-                ],
-              ),
-            )
           ],
         ),
       ),
@@ -133,8 +88,3 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 }
 
-String _getDateNow() {
-  var now = new DateTime.now();
-  var formatter = new DateFormat('yyyy-MM-dd HH:mm:ss');
-  return formatter.format(now);
-}

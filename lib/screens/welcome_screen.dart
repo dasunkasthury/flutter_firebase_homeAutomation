@@ -1,12 +1,14 @@
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:my_home_app/sensorScreens/led.dart';
 import './login_screen.dart';
 import './registration_screen.dart';
-import './chat_screen.dart';
+import '../chatAppScreens/chat_screen.dart';
 import '../weatherScreens/loading_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
+  static String id = "welcome_screen";
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
@@ -113,6 +115,25 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   height: 42.0,
                   child: Text(
                     'Weather App',
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 16.0),
+              child: Material(
+                color: Colors.greenAccent,
+                borderRadius: BorderRadius.circular(30.0),
+                elevation: 5.0,
+                child: MaterialButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LedScreen()));
+                  },
+                  minWidth: 200.0,
+                  height: 42.0,
+                  child: Text(
+                    'IOT sensors',
                   ),
                 ),
               ),

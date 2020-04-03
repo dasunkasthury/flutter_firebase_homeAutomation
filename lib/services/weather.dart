@@ -1,6 +1,5 @@
 import '../services/location.dart';
 import '../services/networking.dart';
-import 'package:flutter/material.dart';
 
 const apiKey = '63ea856131c7d34549e8a73304786ee8';
 
